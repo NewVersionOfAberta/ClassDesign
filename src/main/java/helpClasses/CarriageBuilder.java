@@ -1,11 +1,16 @@
 package helpClasses;
 
 import exceptions.help_class_exception.UnexpectedAmountOfCarsException;
+import train_components.Carriage;
 import train_components.FreightCar;
 import train_components.Locomotive;
 import train_components.PassengerCarriage;
 
 public class CarriageBuilder {
+
+    public static int useId() {
+        return id++;
+    }
 
     private static int id = 0;
 
@@ -15,7 +20,7 @@ public class CarriageBuilder {
         }
     }
 
-    public PassengerCarriage[] buildCarriages(int amount, String owner, int passengerCapacity, int conductorCapacity){
+    public Carriage[] buildCarriages(int amount, String owner, int passengerCapacity, int conductorCapacity){
         validateAmount(amount);
         PassengerCarriage[] passengerCarriages = new PassengerCarriage[amount];
         for (int i = 0; i < amount; i++){
@@ -25,7 +30,7 @@ public class CarriageBuilder {
         return passengerCarriages;
     }
 
-    public FreightCar[] buildFreightCars(int amount, String owner, int liftingCapacity){
+    public Carriage[] buildFreightCars(int amount, String owner, int liftingCapacity){
         validateAmount(amount);
         FreightCar[] freightCars = new FreightCar[amount];
         for (int i = 0; i < amount; i++){
@@ -35,7 +40,7 @@ public class CarriageBuilder {
         return freightCars;
     }
 
-    public Locomotive[] buildLocomotives(int amount, String owner){
+    public Carriage[] buildLocomotives(int amount, String owner){
         validateAmount(amount);
         Locomotive[] locomotives = new Locomotive[amount];
         for (int i = 0; i < amount; i++){

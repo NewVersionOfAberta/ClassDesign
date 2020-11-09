@@ -81,6 +81,7 @@ public class Station {
     public void addTrain(Carriage firstCarriage){
         if (getTrain(firstCarriage.getId()) == null) {
             currentCarriages.add(firstCarriage);
+            log.error("Train #{} was added to station #{}", firstCarriage.getId(), id);
         }else{
             log.error("Try to add train #{} second time", firstCarriage.getId());
             throw new TrainAlreadyAddedException();
