@@ -5,6 +5,11 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class Passenger {
 
+    private final User user;
+    private int ticketId;
+    private int placeNumber;
+    private int carriageNumber;
+
     public Passenger(User user, int ticketId, int placeNumber, int carriageNumber) {
         this.user = user;
         this.ticketId = ticketId;
@@ -12,11 +17,6 @@ public class Passenger {
         this.carriageNumber = carriageNumber;
         log.info("Passenger #{} was created", ticketId);
     }
-
-    private final User user;
-    private int ticketId;
-    private int placeNumber;
-    private int carriageNumber;
 
 
     public User getUser() {

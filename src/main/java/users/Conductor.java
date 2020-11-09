@@ -18,8 +18,8 @@ public class Conductor {
         this.carriageNumber = carriageNumber;
         this.placeNumber = placeNumber;
         log.info("Conductor #{} was created", user.getId());
-    }
 
+    }
 
     public int getPlaceNumber() {
         return placeNumber;
@@ -55,4 +55,5 @@ public class Conductor {
     public void setCarriageNumber(int carriageNumber) {
         this.carriageNumber = carriageNumber;
     }
+
 }
