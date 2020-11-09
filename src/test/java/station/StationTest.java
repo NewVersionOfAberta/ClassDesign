@@ -21,7 +21,7 @@ class StationTest {
     @Test
     void couple_couple2carriages_expect2carriagesList() {
         CarriageBuilder carriageBuilder = new CarriageBuilder();
-        FreightCar[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
+        Carriage[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
 
         Station.couple(freightCars[0], freightCars[1]);
 
@@ -53,7 +53,7 @@ class StationTest {
         int actual;
 
         CarriageBuilder carriageBuilder = new CarriageBuilder();
-        PassengerCarriage[] passengerCarriages = carriageBuilder.buildCarriages(2, OWNER, 30, 3);
+        Carriage[] passengerCarriages = carriageBuilder.buildCarriages(2, OWNER, 30, 3);
         Locomotive locomotive = new Locomotive(1, OWNER);
 
         Station.makeATrain(locomotive, passengerCarriages);
@@ -73,7 +73,7 @@ class StationTest {
     @Test
     void uncoupleCarriage_2coupledCars_2separatedCars() {
         CarriageBuilder carriageBuilder = new CarriageBuilder();
-        FreightCar[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
+        Carriage[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
 
         Station.couple(freightCars[0], freightCars[1]);
 

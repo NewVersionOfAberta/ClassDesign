@@ -2,6 +2,7 @@ package helpClasses;
 
 import exceptions.help_class_exception.UnexpectedAmountOfCarsException;
 import org.junit.jupiter.api.Test;
+import train_components.Carriage;
 import train_components.FreightCar;
 import train_components.Locomotive;
 import train_components.PassengerCarriage;
@@ -26,7 +27,7 @@ class CarriageBuilderTest {
         int actual;
         CarriageBuilder carriageBuilder = new CarriageBuilder();
 
-        PassengerCarriage[] carriages = carriageBuilder.buildCarriages(expected, OWNER, 10, 2);
+        Carriage[] carriages = carriageBuilder.buildCarriages(expected, OWNER, 10, 2);
         actual = carriages.length;
 
         assertEquals(expected, actual);
@@ -38,7 +39,7 @@ class CarriageBuilderTest {
         int actual;
         CarriageBuilder carriageBuilder = new CarriageBuilder();
 
-        FreightCar[] carriages = carriageBuilder.buildFreightCars(expected, OWNER, 10);
+        Carriage[] carriages = carriageBuilder.buildFreightCars(expected, OWNER, 10);
         actual = carriages.length;
 
         assertEquals(expected, actual);
@@ -50,7 +51,7 @@ class CarriageBuilderTest {
         int actual;
         CarriageBuilder carriageBuilder = new CarriageBuilder();
 
-        Locomotive[] carriages = carriageBuilder.buildLocomotives(expected, OWNER);
+        Carriage[] carriages = carriageBuilder.buildLocomotives(expected, OWNER);
         actual = carriages.length;
 
         assertEquals(expected, actual);

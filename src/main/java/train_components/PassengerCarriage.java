@@ -46,7 +46,7 @@ public class PassengerCarriage extends Carriage {
             log.error("Try to access carriage #{} in carriage #{}", passenger.getCarriageNumber(), getId());
             throw new WrongCarriageException();
         }
-        if (passenger.getPlaceNumber() < passengerCapacity && passenger.getPlaceNumber() >= 0) {
+        if (passenger.getPlaceNumber() <= passengerCapacity && passenger.getPlaceNumber() > 0) {
             if (passengers[passenger.getPlaceNumber() - 1] != null){
                 log.warn("Trying to take not empty place #{}, carriage #{}", passenger.getPlaceNumber(), getId());
                 throw new TryToAccessNotEmptyPlaceException();
