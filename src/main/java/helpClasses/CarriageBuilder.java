@@ -8,11 +8,11 @@ import train_components.PassengerCarriage;
 
 public class CarriageBuilder {
 
+    private static int id = 0;
+
     public static int useId() {
         return id++;
     }
-
-    private static int id = 0;
 
     private void validateAmount(int amount){
         if (amount < 0){

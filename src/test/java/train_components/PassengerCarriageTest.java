@@ -1,6 +1,5 @@
 package train_components;
 
-import exceptions.train_component_exceptions.passengerCarriage.NotEnoughPlacesException;
 import exceptions.train_component_exceptions.passengerCarriage.WrongCarriageException;
 import lombok.extern.slf4j.Slf4j;
 import org.junit.jupiter.api.Test;
@@ -38,7 +37,7 @@ class PassengerCarriageTest {
     }
 
     @Test
-    void addPassenger_addPassenger11place_NotEnoughPlacesException() {
+    void addPassenger_addPassenger11place_ArrayIndexOutOfBoundsException() {
         int passengerPlace = 11;
         int carriageNumber = 2;
         Passenger expectedPassenger = new Passenger(new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
@@ -46,7 +45,7 @@ class PassengerCarriageTest {
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
 
-        assertThrows(NotEnoughPlacesException.class, () -> passengerCarriage.addPassenger(expectedPassenger));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> passengerCarriage.addPassenger(expectedPassenger));
     }
 
     @Test
@@ -79,12 +78,12 @@ class PassengerCarriageTest {
     }
 
     @Test
-    void removePassenger_remove11place_NotEnoughPlacesException() {
+    void removePassenger_remove11place_ArrayIndexOutOfBoundsException() {
         int passengerPlace = 11;
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
 
-        assertThrows(NotEnoughPlacesException.class, () -> passengerCarriage.removePassenger(passengerPlace));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> passengerCarriage.removePassenger(passengerPlace));
     }
 
     @Test
@@ -105,7 +104,7 @@ class PassengerCarriageTest {
     }
 
     @Test
-    void addConductor_addConductor11place_NotEnoughPlacesException() {
+    void addConductor_addConductor11place_ArrayIndexOutOfBoundsException() {
         int conductorPlace = 11;
         int carriageNumber = 2;
         Conductor expectedConductor = new Conductor(new User("Harry", "Kenn",1), 1, conductorPlace, carriageNumber);
@@ -113,7 +112,7 @@ class PassengerCarriageTest {
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
 
-        assertThrows(NotEnoughPlacesException.class, () -> passengerCarriage.addConductor(expectedConductor));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> passengerCarriage.addConductor(expectedConductor));
     }
 
     @Test
@@ -146,11 +145,11 @@ class PassengerCarriageTest {
     }
 
     @Test
-    void removeConductor_remove11place_NotEnoughPlacesException() {
+    void removeConductor_remove11place_ArrayIndexOutOfBoundsException() {
         int conductorPlace = 11;
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
 
-        assertThrows(NotEnoughPlacesException.class, () -> passengerCarriage.removeConductor(conductorPlace));
+        assertThrows(ArrayIndexOutOfBoundsException.class, () -> passengerCarriage.removeConductor(conductorPlace));
     }
 }

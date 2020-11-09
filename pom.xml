@@ -5,7 +5,7 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>by.natali.proj</groupId>
-    <artifactId>disign_classes</artifactId>
+    <artifactId>design_classes</artifactId>
     <version>1.0-SNAPSHOT</version>
     <build>
         <plugins>
