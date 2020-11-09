@@ -8,6 +8,10 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 public class FreightCar extends Carriage {
 
+    private final int liftingCapacity;
+    private int currentCargo;
+
+
     public FreightCar(int id, String owner, int liftingCapacity) {
         super(id, owner);
         this.liftingCapacity = liftingCapacity;
@@ -18,13 +22,9 @@ public class FreightCar extends Carriage {
         return liftingCapacity;
     }
 
-    private final int liftingCapacity;
-
     public int getCurrentCargo() {
         return currentCargo;
     }
-
-    private int currentCargo;
 
     public void addCargo(int cargo) {
         if (currentCargo + cargo <= liftingCapacity){

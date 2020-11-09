@@ -4,8 +4,13 @@ import exceptions.train_component_exceptions.TryToAccessNotEmptyPlaceException;
 import lombok.extern.slf4j.Slf4j;
 import users.Driver;
 
+import static java.util.Objects.*;
+
 @Slf4j
 public class Locomotive extends Carriage {
+
+    private Driver currentDriver;
+
     public Locomotive(int id, String owner) {
         super(id, owner);
         log.info("Locomotive #{} was created", id);
@@ -21,15 +26,19 @@ public class Locomotive extends Carriage {
                     this.currentDriver.getUser().getId());
             throw new TryToAccessNotEmptyPlaceException();
         }else{
-            log.info("Locomotive #{}. Set new driver #{}",getId(), currentDriver != null ? currentDriver.getUser().getId() : "No driver");
+            log.info("Locomotive #{}. Set new driver #{}",getId(),
+                    currentDriver != null ? currentDriver.getUser().getId() : "No driver");
+            requireNonNull(currentDriver).setCurrentCarriageId(getId());
             this.currentDriver = currentDriver;
         }
     }
-    public void removeDriver(){
+
+    public Driver removeDriver(){
+        Driver result = currentDriver;
         currentDriver = null;
         log.info("Locomotive #{}. Driver #{} was removed", getId(), currentDriver.getUser().getId());
+        result.setCurrentCarriageId(0);
+        return result;
     }
-
-    private Driver currentDriver;
 
 }

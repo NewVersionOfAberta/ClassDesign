@@ -1,6 +1,5 @@
 import helpClasses.CarriageBuilder;
 import lombok.extern.slf4j.Slf4j;
-import station.Station;
 import train_components.Carriage;
 import train_components.FreightCar;
 import train_components.Locomotive;
@@ -51,7 +50,7 @@ public class Runner {
 
 
     public static void main(String[] args) {
-        int stationNumber = 3;
+        int locomotivesAmount = 3;
         int passengerCarriages = 4;
         int passengerCapacity = 30;
         int conductorCapacity = 4;
@@ -59,12 +58,11 @@ public class Runner {
         int liftingCapacity = 100;
 
         String owner = "BR";
-        List<Station> stations = new ArrayList<>();
         List<Carriage[]> carriages = new ArrayList<>();
         CarriageBuilder carriageBuilder = new CarriageBuilder();
 
 
-        Carriage[] locomotives = carriageBuilder.buildLocomotives(stationNumber, owner);
+        Carriage[] locomotives = carriageBuilder.buildLocomotives(locomotivesAmount, owner);
 
 
         carriages.add(carriageBuilder.buildCarriages(passengerCarriages, owner, passengerCapacity, conductorCapacity));
@@ -76,13 +74,7 @@ public class Runner {
         for(Carriage[] cars : carriages){
             fillPassengerCarriages(cars);
         }
-
-        for (int i = 0; i < stationNumber; i++){
-            Station station = new Station(i);
-            Station.makeATrain((Locomotive) locomotives[i], carriages.get(i));
-            stations.add(station);
-            station.addTrain(locomotives[i]);
-        }
-
+        for (int i = 0; i < locomotivesAmount; i++ )
+        Carriage.makeATrain((Locomotive) locomotives[i], carriages.get(i));
     }
 }
