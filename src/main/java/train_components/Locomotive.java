@@ -36,8 +36,9 @@ public class Locomotive extends Carriage {
     public Driver removeDriver(){
         Driver result = currentDriver;
         currentDriver = null;
-        log.info("Locomotive #{}. Driver #{} was removed", getId(), currentDriver.getUser().getId());
-        result.setCurrentCarriageId(0);
+        log.info("Locomotive #{}. Driver #{} was removed", getId(), result.getUser().getId());
+        result.setCurrentCarriageId(-1);
+
         return result;
     }
 

@@ -14,7 +14,7 @@ public abstract class Carriage {
 
 
     Carriage(int id, String owner) {
-        if (id <= 0) {
+        if (id < 0) {
             throw new IllegalArgumentException();
         }
 

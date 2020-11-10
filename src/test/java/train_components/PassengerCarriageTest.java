@@ -7,6 +7,8 @@ import users.Conductor;
 import users.Passenger;
 import users.User;
 
+import java.time.LocalDate;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 @Slf4j
@@ -24,7 +26,8 @@ class PassengerCarriageTest {
         Passenger actual;
         int passengerPlace = 2;
         int carriageNumber = 2;
-        Passenger expectedPassenger = new Passenger(new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
+        Passenger expectedPassenger = new Passenger(
+                new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
@@ -40,7 +43,8 @@ class PassengerCarriageTest {
     void addPassenger_addPassenger11place_ArrayIndexOutOfBoundsException() {
         int passengerPlace = 11;
         int carriageNumber = 2;
-        Passenger expectedPassenger = new Passenger(new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
+        Passenger expectedPassenger = new Passenger(
+                new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
@@ -66,7 +70,8 @@ class PassengerCarriageTest {
     void removePassenger_remove2place_null() {
         int passengerPlace = 2;
         int carriageNumber = 2;
-        Passenger expectedPassenger = new Passenger(new User("Harry", "Kenn", 1), 1, passengerPlace, carriageNumber);
+        Passenger expectedPassenger = new Passenger(
+                new User("Harry", "Kenn", 1), 1, passengerPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
@@ -91,7 +96,8 @@ class PassengerCarriageTest {
         Passenger actual;
         int passengerPlace = 2;
         int carriageNumber = 2;
-        Passenger expectedPassenger = new Passenger(new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
+        Passenger expectedPassenger = new Passenger(
+                new User("Harry", "Kenn",1), 1, passengerPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
@@ -107,7 +113,8 @@ class PassengerCarriageTest {
     void addConductor_addConductor11place_ArrayIndexOutOfBoundsException() {
         int conductorPlace = 11;
         int carriageNumber = 2;
-        Conductor expectedConductor = new Conductor(new User("Harry", "Kenn",1), 1, conductorPlace, carriageNumber);
+        Conductor expectedConductor = new Conductor(
+                new User("Harry", "Kenn",1), LocalDate.now(), conductorPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
@@ -119,7 +126,8 @@ class PassengerCarriageTest {
     void addConductor_addConductorWrongCarriage_WrongCarriageException() {
         int conductorPlace = 2;
         int carriageNumber = 2;
-        Conductor expectedConductor = new Conductor(new User("Harry", "Kenn",1), 1, conductorPlace, carriageNumber);
+        Conductor expectedConductor = new Conductor(
+                new User("Harry", "Kenn",1), LocalDate.now(), conductorPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber + 1);
@@ -133,7 +141,8 @@ class PassengerCarriageTest {
     void removeConductor_remove2place_null() {
         int conductorPlace = 2;
         int carriageNumber = 2;
-        Conductor expectedConductor = new Conductor(new User("Harry", "Kenn",1), 1, conductorPlace, carriageNumber);
+        Conductor expectedConductor = new Conductor(
+                new User("Harry", "Kenn",1), LocalDate.now(), conductorPlace, carriageNumber);
 
         PassengerCarriage passengerCarriage = initPassengerCarriage();
         passengerCarriage.setNumberInTrain(carriageNumber);
