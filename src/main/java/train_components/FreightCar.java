@@ -30,10 +30,11 @@ public class FreightCar extends Carriage {
         if (currentCargo + cargo <= liftingCapacity){
             currentCargo += cargo;
             log.info("Freight car #{}. Add cargo {}, current value: {}", getId(), cargo, currentCargo);
-        }else
+        }else {
             log.error("Freight car #{}. Too big cargo({}) for this carriage. Lifting capacity: {}", getId(),
                     currentCargo + cargo, liftingCapacity);
             throw new FreightCarriageOverloadException();
+        }
     }
 
     public void removeCargo(int cargoToRemove){

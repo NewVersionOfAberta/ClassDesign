@@ -8,6 +8,7 @@ import users.Conductor;
 import users.Passenger;
 import users.User;
 
+import java.time.LocalDate;
 import java.util.*;
 
 import static helpClasses.CarriageBuilder.useId;
@@ -40,7 +41,7 @@ public class Runner {
                     id++;
                 }
                 for (int i = 0; i < tempCarriage.getConductorCapacity(); i++){
-                    tempCarriage.addConductor(new Conductor(makeUser(), id , i + 1, tempCarriage.getNumberInTrain()));
+                    tempCarriage.addConductor(new Conductor(makeUser(), LocalDate.now(), i + 1, tempCarriage.getNumberInTrain()));
                     id++;
                 }
             }

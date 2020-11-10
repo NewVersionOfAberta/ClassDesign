@@ -14,7 +14,7 @@ public class User {
             log.error("Name and surname must not be null");
             throw new NullPointerException();
         }
-        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH || surname.isEmpty() || surname.length() < MAX_NAME_LENGTH){
+        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH || surname.isEmpty() || surname.length() > MAX_NAME_LENGTH){
             log.error("Name and surname must have less then {} and greater then {} characters", MAX_NAME_LENGTH, 0);
             throw new IllegalArgumentException();
         }
