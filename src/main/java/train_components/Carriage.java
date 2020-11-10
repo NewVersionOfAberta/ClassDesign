@@ -52,44 +52,17 @@ public abstract class Carriage {
         return id;
     }
 
-    public static Carriage makeATrain(Locomotive locomotive, Carriage... carriages) {
-        int carriageNumber = 1;
-        if (locomotive == null) {
-            log.error("Trying to create train without locomotive");
-            throw new NullPointerException();
-        }
-        Carriage tempCarriage = locomotive;
-        tempCarriage.setPrev(null);
 
-        for (Carriage carriage : carriages) {
-            couple(tempCarriage, carriage);
-            if (tempCarriage instanceof PassengerCarriage){
-                ((PassengerCarriage) tempCarriage).setNumberInTrain(carriageNumber);
-                carriageNumber++;
-            }
-            tempCarriage = carriage;
-        }
-        log.info("Train with first locomotive #{} was created", locomotive.getId());
-        return locomotive;
+    public void couple(Carriage nextCarriage) {
+        this.setNext(nextCarriage) ;
+        nextCarriage.setPrev(this);
+        log.info("Carriage #{} was coupled with carriage #{}", this.getId(), nextCarriage.getId());
     }
 
-    public static void couple(Carriage firstCarriage, Carriage secondCarriage) {
-        if (firstCarriage == null || secondCarriage == null){
-            log.error("Trying to couple non-existent cars");
-            throw new NullPointerException();
-        }
-        firstCarriage.setNext(secondCarriage) ;
-        secondCarriage.setPrev(firstCarriage);
-        log.info("Carriage #{} was coupled with carriage #{}", firstCarriage.getId(), secondCarriage.getId());
-    }
+    public void uncouple(){
 
-    public static void uncouple(Carriage carriage){
-        if (carriage == null){
-            throw new NullPointerException();
-        }
-
-        Carriage nextCar = carriage.next;
-        Carriage prevCar = carriage.prev;
+        Carriage nextCar = this.next;
+        Carriage prevCar = this.prev;
 
         if (nextCar != null){
             nextCar.prev = prevCar;
@@ -98,7 +71,7 @@ public abstract class Carriage {
             prevCar.next = nextCar;
         }
 
-        carriage.next = null;
-        carriage.prev = null;
+        this.next = null;
+        this.prev = null;
     }
 }

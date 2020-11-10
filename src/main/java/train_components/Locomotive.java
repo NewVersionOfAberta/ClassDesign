@@ -42,4 +42,20 @@ public class Locomotive extends Carriage {
         return result;
     }
 
+    public void makeATrain(Carriage... carriages) {
+        int carriageNumber = 1;
+        Carriage tempCarriage = this;
+        tempCarriage.setPrev(null);
+
+        for (Carriage carriage : carriages) {
+            tempCarriage.couple(carriage);
+            if (tempCarriage instanceof PassengerCarriage){
+                ((PassengerCarriage) tempCarriage).setNumberInTrain(carriageNumber);
+                carriageNumber++;
+            }
+            tempCarriage = carriage;
+        }
+        log.info("Train with first locomotive #{} was created", this.getId());
+    }
+
 }

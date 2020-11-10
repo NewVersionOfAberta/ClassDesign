@@ -9,15 +9,16 @@ public class User {
     private String surname;
     private final int id;
 
-    public User(String name, String surname, int id) {
-        if (name == null || surname == null){
-            log.error("Name and surname must not be null");
-            throw new NullPointerException();
-        }
-        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH || surname.isEmpty() || surname.length() > MAX_NAME_LENGTH){
+    private void validateName(String name){
+        if (name.isEmpty() || name.length() > MAX_NAME_LENGTH){
             log.error("Name and surname must have less then {} and greater then {} characters", MAX_NAME_LENGTH, 0);
             throw new IllegalArgumentException();
         }
+    }
+
+    public User(String name, String surname, int id) {
+        validateName(name);
+        validateName(surname);
         this.name = name;
         this.surname = surname;
         this.id = id;
@@ -29,6 +30,7 @@ public class User {
     }
 
     public void setName(String name) {
+        validateName(name);
         this.name = name;
     }
 
@@ -37,6 +39,7 @@ public class User {
     }
 
     public void setSurname(String surname) {
+        validateName(surname);
         this.surname = surname;
     }
 

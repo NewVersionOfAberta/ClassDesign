@@ -25,43 +25,21 @@ class CarriageTest {
         CarriageBuilder carriageBuilder = new CarriageBuilder();
         Carriage[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
 
-        Carriage.couple(freightCars[0], freightCars[1]);
+        freightCars[0].couple(freightCars[1]);
 
         assertEquals(freightCars[0].getNext(), freightCars[1]);
         assertEquals(freightCars[1].getPrev(), freightCars[0]);
     }
 
-    @Test
-    void makeATrain_2carriages1locomotive_3carriages() {
-        int expect = 3;
-        int actual;
-
-        CarriageBuilder carriageBuilder = new CarriageBuilder();
-        Carriage[] passengerCarriages = carriageBuilder.buildCarriages(2, OWNER, 30, 3);
-        Locomotive locomotive = new Locomotive(1, OWNER);
-
-        Carriage.makeATrain(locomotive, passengerCarriages);
-
-        actual = countCars(locomotive);
-
-        assertEquals(expect, actual);
-        assertEquals(locomotive.getNext(), passengerCarriages[0]);
-        assertEquals(passengerCarriages[0].getNext(), passengerCarriages[1]);
-    }
-
-    @Test
-    void makeATrain_nullLocomotive_LocomotiveMustNotBeNULL() {
-        assertThrows(NullPointerException.class, () -> Carriage.makeATrain(null));
-    }
 
     @Test
     void uncoupleCarriage_2coupledCars_2separatedCars() {
         CarriageBuilder carriageBuilder = new CarriageBuilder();
         Carriage[] freightCars = carriageBuilder.buildFreightCars(2, OWNER, 3);
 
-        Carriage.couple(freightCars[0], freightCars[1]);
+        freightCars[0].couple(freightCars[1]);
 
-        Carriage.uncouple(freightCars[0]);
+        freightCars[0].uncouple();
 
         assertNull(freightCars[0].getNext());
         assertNull(freightCars[0].getPrev());

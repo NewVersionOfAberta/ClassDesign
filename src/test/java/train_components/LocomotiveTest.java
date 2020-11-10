@@ -1,6 +1,7 @@
 package train_components;
 
 import exceptions.train_component_exceptions.TryToAccessNotEmptyPlaceException;
+import helpClasses.CarriageBuilder;
 import org.junit.jupiter.api.Test;
 import users.Driver;
 import users.User;
@@ -15,6 +16,17 @@ class LocomotiveTest {
     private Locomotive initLocomotive(){
         return new Locomotive(1, OWNER);
     }
+
+    private int countCars(Carriage firstCarriage){
+        Carriage tempCarriage = firstCarriage;
+        int result = 0;
+        while (tempCarriage != null){
+            result++;
+            tempCarriage = tempCarriage.getNext();
+        }
+        return result;
+    }
+
 
     @Test
     void setCurrentDriver_setDriverWithoutRemovePrevious_TryToAccessNotEmptyPlaceException() {
@@ -38,5 +50,23 @@ class LocomotiveTest {
 
         locomotive.removeDriver();
         assertNull(locomotive.getCurrentDriver());
+    }
+
+    @Test
+    void makeATrain_2carriages1locomotive_3carriages() {
+        int expect = 3;
+        int actual;
+
+        CarriageBuilder carriageBuilder = new CarriageBuilder();
+        Carriage[] passengerCarriages = carriageBuilder.buildCarriages(2, OWNER, 30, 3);
+        Locomotive locomotive = new Locomotive(1, OWNER);
+
+        locomotive.makeATrain(passengerCarriages);
+
+        actual = countCars(locomotive);
+
+        assertEquals(expect, actual);
+        assertEquals(locomotive.getNext(), passengerCarriages[0]);
+        assertEquals(passengerCarriages[0].getNext(), passengerCarriages[1]);
     }
 }

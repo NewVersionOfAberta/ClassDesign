@@ -66,16 +66,17 @@ public class Runner {
         Carriage[] locomotives = carriageBuilder.buildLocomotives(locomotivesAmount, owner);
 
 
-        carriages.add(carriageBuilder.buildCarriages(passengerCarriages, owner, passengerCapacity, conductorCapacity));
-        carriages.add(carriageBuilder.buildFreightCars(freightCarsAmount, owner, liftingCapacity));
-        carriages.add(new Carriage[]{
+        carriages.add( carriageBuilder.buildCarriages(passengerCarriages, owner, passengerCapacity, conductorCapacity));
+        carriages.add( carriageBuilder.buildFreightCars(freightCarsAmount, owner, liftingCapacity));
+        carriages.add(new Carriage[] {
                 new PassengerCarriage(useId(), owner, passengerCapacity, conductorCapacity),
-                new FreightCar(useId(), owner, liftingCapacity)});
+                new FreightCar(useId(), owner, liftingCapacity) });
 
-        for(Carriage[] cars : carriages){
+        for(Carriage[] cars : carriages) {
             fillPassengerCarriages(cars);
         }
-        for (int i = 0; i < locomotivesAmount; i++ )
-        Carriage.makeATrain((Locomotive) locomotives[i], carriages.get(i));
+        for (int i = 0; i < locomotivesAmount; i++ ) {
+            ((Locomotive) locomotives[i]).makeATrain(carriages.get(i));
+        }
     }
 }
